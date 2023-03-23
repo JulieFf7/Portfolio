@@ -1,8 +1,7 @@
 import PySimpleGUI as sg
 
 layout = [[sg.Text("F or C ?")],
-          [sg.Input(key='-INPUT-')],
-          [sg.Button('F'), sg.Button('C')],
+          [sg.Input(key='-INPUT-'), sg.Button('F'), sg.Button('C')],
           [sg.Button('Ok')],
           [sg.Text(size=(40,1), key='-OUTPUT-')]]
 
@@ -16,11 +15,11 @@ while True:
     elif  event == 'F':
         f = float(values['-INPUT-'])
         c = (f - 32) * 5 / 9
-        window['-OUTPUT-'].update(c)
+        window['-OUTPUT-'].update(values['-INPUT-'] + " F is " + str(c) + " C")
     elif event == 'C':
         c = float(values['-INPUT-'])
         f =  (c * 9 / 5 ) + 32
-        print(f)
+        window['-OUTPUT-'].update(values['-INPUT-'] + " C is " + str(f) + " F")
     else:    print("what")
 
 window.close()
